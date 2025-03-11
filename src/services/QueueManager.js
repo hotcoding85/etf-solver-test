@@ -137,11 +137,11 @@ class QueueManager {
     
     // If we have a liquidity analyzer object with prioritizeOrders method, use it
     if (liquidityAnalyzer && typeof liquidityAnalyzer.prioritizeOrders === 'function') {
-      try {1
+      try {
         // Prepare all buy and sell orders for analysis
         const buyOrders = this.queues.buy.map(order => ({ order, type: 'buy' }));
         const sellOrders = this.queues.sell.map(order => ({ order, type: 'sell' }));
-        const allOrders = [...buyOrders, ...sellOrders];1
+        const allOrders = [...buyOrders, ...sellOrders];
         
         // Get prioritized orders from the analyzer using the correct method
         const prioritizedOrders = await liquidityAnalyzer.prioritizeOrders(allOrders, indices, remainingCapacityAfterRebalances);

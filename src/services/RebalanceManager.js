@@ -1,11 +1,20 @@
 const logger = require('../utils/logger');
 const Asset = require('../models/Asset');
 
+/**
+ * Manages index rebalancing operations
+ */
 class RebalanceManager {
   constructor() {
     this.rebalanceHistory = [];
   }
 
+  /**
+   * Create a rebalance plan for an index
+   * @param {Index} index - The index to rebalance
+   * @param {Object} binanceAdapter - The Binance API adapter for market data
+   * @return {Object} The rebalance plan
+   */
   async createRebalancePlan(index, binanceAdapter) {
     logger.info(`Creating rebalance plan for index ${index.id}`);
     
@@ -36,6 +45,13 @@ class RebalanceManager {
     };
   }
 
+  /**
+   * Execute a rebalance for an index
+   * @param {Index} index - The index to rebalance
+   * @param {Object} rebalancePlan - The rebalance plan
+   * @param {Object} binanceAdapter - The Binance API adapter
+   * @return {Object} The rebalance result
+   */
   async executeRebalance(index, rebalancePlan, binanceAdapter) {
     logger.info(`Executing rebalance for index ${index.id}`);
     
