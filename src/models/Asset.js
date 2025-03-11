@@ -62,7 +62,7 @@ class Asset {
   /**
    * Create an asset from a serialized object
    * @param {Object} data - The serialized asset data
-   * @return {Asset} A asset instance
+   * @return {Asset} A new asset instance
    */
   static fromObject(data) {
     return new Asset(data.id, data.quantity, data.initialPrice, data.currentPrice);
@@ -78,7 +78,7 @@ class Asset {
       quantity: this.quantity,
       initialPrice: this.initialPrice,
       currentPrice: this.currentPrice
-    }
+    };
   }
 }
 

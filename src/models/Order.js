@@ -126,7 +126,6 @@ class Order {
     return order;
   }
 
-  
   /**
    * Convert the order to a simple object for serialization
    * @return {Object} A plain object representation of the order
@@ -162,10 +161,25 @@ class Order {
     return new Order('buy', positionId, indexId, quantity, indexPrice, timestamp);
   }
 
+  /**
+   * Create a sell order
+   * @param {string} positionId - The position ID
+   * @param {string} indexId - The index ID
+   * @param {number} quantity - The quantity to sell
+   * @param {number} indexPrice - The target price for the index
+   * @param {number} timestamp - The timestamp
+   * @return {Order} A new sell order
+   */
   static createSellOrder(positionId, indexId, quantity, indexPrice, timestamp = Date.now()) {
     return new Order('sell', positionId, indexId, quantity, indexPrice, timestamp);
   }
 
+  /**
+   * Create a cancel order
+   * @param {string} positionId - The position ID to cancel
+   * @param {number} timestamp - The timestamp
+   * @return {Order} A new cancel order
+   */
   static createCancelOrder(positionId, timestamp = Date.now()) {
     return new Order('cancel', positionId, null, null, null, timestamp);
   }
