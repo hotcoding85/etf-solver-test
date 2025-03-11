@@ -13,6 +13,9 @@ const Order = require('./models/Order');
 // Services
 const QueueManager = require('./services/QueueManager');
 const OrderProcessor = require('./services/OrderProcessor');
+const LiquidityAnalyzer = require('./services/LiquidityAnalyzer');
+const BinanceAdapter = require('./services/BinanceAdapter');
+const RebalanceManager = require('./services/RebalanceManager');
 
 // Initialize the application
 const app = express();
@@ -25,6 +28,10 @@ const positions = new Map();
 
 // Initialize service objects
 const queueManager = new QueueManager();
+const liquidityAnalyzer = new LiquidityAnalyzer();
+const binanceAdapter = new BinanceAdapter();
+const rebalanceManager = new RebalanceManager();
+
 // Set up the order processor
 const orderProcessor = new OrderProcessor(
   queueManager,
@@ -211,14 +218,14 @@ app.post('/api/orders/rebalance', (req, res) => {
 
 // 3. Position Management
 app.get('/api/positions/:id', (req, res) => {
-  const { id } = req.params;1
+  const { id } = req.params;
   const position = positions.get(id);
   
   if (!position) {
     return res.status(404).json({ error: `Position ${id} not found` });
   }
   
-  return res.json(position.toObject());1
+  return res.json(position.toObject());
 });
 
 app.get('/api/positions', (req, res) => {
@@ -285,4 +292,3 @@ module.exports = {
   binanceAdapter,
   rebalanceManager
 };
-git 
