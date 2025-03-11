@@ -1,0 +1,25 @@
+{
+    "name": "workspace",
+    "version": "1.0.0",
+    "main": "index.js",
+    "directories": {
+      "test": "tests"
+    },
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "Michele Filippi",
+    "license": "ISC",
+    "description": "ETF Solver Test Backend APIs",
+    "dependencies": {
+      "axios": "^1.8.2",
+      "body-parser": "^1.20.3",
+      "cors": "^2.8.5",
+      "express": "^4.21.2",
+      "jest": "^29.7.0",
+      "supertest": "^7.0.0",
+      "winston": "^3.17.0"
+    }
+  }
+  
