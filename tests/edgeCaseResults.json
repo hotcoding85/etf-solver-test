@@ -1,0 +1,17 @@
+{
+  "unevenWeight": {
+    "error": "Request failed with status code 400"
+  },
+  "largeIndex": {
+    "error": "Request failed with status code 400"
+  },
+  "highFrequency": {
+    "error": "Request failed with status code 400"
+  },
+  "extremePrices": {
+    "error": "Request failed with status code 400"
+  },
+  "noLiquidity": {
+    "error": "Request failed with status code 400"
+  }
+}

@@ -1,0 +1,342 @@
+{
+  "testCases": [
+    {
+      "description": "Basic buy, sell and cancel flow",
+      "steps": [
+        {
+          "timestamp": 0,
+          "action": "buy",
+          "positionId": "position-1",
+          "indexId": "test-index",
+          "quantity": 1,
+          "indexPrice": 1000
+        },
+        {
+          "timestamp": 1000,
+          "action": "buy",
+          "positionId": "position-2",
+          "indexId": "test-index",
+          "quantity": 2,
+          "indexPrice": 990
+        },
+        {
+          "timestamp": 2000,
+          "action": "sell",
+          "positionId": "position-3",
+          "indexId": "test-index",
+          "quantity": 0.5,
+          "indexPrice": 1020
+        },
+        {
+          "timestamp": 3000,
+          "action": "cancel",
+          "positionId": "position-1"
+        }
+      ]
+    },
+    {
+      "description": "High frequency trading scenario",
+      "steps": [
+        {
+          "timestamp": 0,
+          "action": "buy",
+          "positionId": "hft-position-1",
+          "indexId": "hft-index",
+          "quantity": 0.1,
+          "indexPrice": 1000
+        },
+        {
+          "timestamp": 100,
+          "action": "buy",
+          "positionId": "hft-position-2",
+          "indexId": "hft-index",
+          "quantity": 0.2,
+          "indexPrice": 1000.5
+        },
+        {
+          "timestamp": 200,
+          "action": "sell",
+          "positionId": "hft-position-3",
+          "indexId": "hft-index",
+          "quantity": 0.15,
+          "indexPrice": 999.5
+        },
+        {
+          "timestamp": 300,
+          "action": "buy",
+          "positionId": "hft-position-4",
+          "indexId": "hft-index",
+          "quantity": 0.3,
+          "indexPrice": 1000.2
+        },
+        {
+          "timestamp": 400,
+          "action": "sell",
+          "positionId": "hft-position-5",
+          "indexId": "hft-index",
+          "quantity": 0.25,
+          "indexPrice": 999.8
+        },
+        {
+          "timestamp": 500,
+          "action": "cancel",
+          "positionId": "hft-position-1"
+        }
+      ]
+    },
+    {
+      "description": "Rebalance scenario",
+      "steps": [
+        {
+          "timestamp": 0,
+          "action": "rebalance",
+          "indexId": "rebalance-index"
+        },
+        {
+          "timestamp": 1000,
+          "action": "buy",
+          "positionId": "rebalance-position-1",
+          "indexId": "rebalance-index",
+          "quantity": 1,
+          "indexPrice": 1000
+        },
+        {
+          "timestamp": 2000,
+          "action": "rebalance",
+          "indexId": "rebalance-index"
+        }
+      ]
+    },
+    {
+      "description": "Price change scenario",
+      "steps": [
+        {
+          "timestamp": 0,
+          "action": "buy",
+          "positionId": "price-position-1",
+          "indexId": "price-index",
+          "quantity": 1,
+          "indexPrice": 1000
+        },
+        {
+          "timestamp": 1000,
+          "action": "price_change",
+          "indexId": "price-index",
+          "changePercent": -5
+        },
+        {
+          "timestamp": 2000,
+          "action": "buy",
+          "positionId": "price-position-2",
+          "indexId": "price-index",
+          "quantity": 1,
+          "indexPrice": 950
+        },
+        {
+          "timestamp": 3000,
+          "action": "price_change",
+          "indexId": "price-index",
+          "changePercent": 10
+        },
+        {
+          "timestamp": 4000,
+          "action": "sell",
+          "positionId": "price-position-3",
+          "indexId": "price-index",
+          "quantity": 0.5,
+          "indexPrice": 1045
+        }
+      ]
+    },
+    {
+      "description": "Liquidity stress test",
+      "steps": [
+        {
+          "timestamp": 0,
+          "action": "buy",
+          "positionId": "liquidity-position-1",
+          "indexId": "liquidity-index",
+          "quantity": 100,
+          "indexPrice": 1000
+        },
+        {
+          "timestamp": 1000,
+          "action": "buy",
+          "positionId": "liquidity-position-2",
+          "indexId": "liquidity-index",
+          "quantity": 1000,
+          "indexPrice": 1010
+        },
+        {
+          "timestamp": 2000,
+          "action": "sell",
+          "positionId": "liquidity-position-3",
+          "indexId": "liquidity-index",
+          "quantity": 500,
+          "indexPrice": 990
+        }
+      ]
+    },
+    {
+      "description": "Edge case: Very large orders",
+      "steps": [
+        {
+          "timestamp": 0,
+          "action": "buy",
+          "positionId": "large-position-1",
+          "indexId": "large-index",
+          "quantity": 10000,
+          "indexPrice": 1000
+        },
+        {
+          "timestamp": 1000,
+          "action": "sell",
+          "positionId": "large-position-2",
+          "indexId": "large-index",
+          "quantity": 5000,
+          "indexPrice": 990
+        }
+      ]
+    },
+    {
+      "description": "Edge case: Rate limiting test",
+      "steps": [
+        {
+          "timestamp": 0,
+          "action": "buy",
+          "positionId": "rate-position-1",
+          "indexId": "rate-index",
+          "quantity": 1,
+          "indexPrice": 1000
+        },
+        {
+          "timestamp": 100,
+          "action": "buy",
+          "positionId": "rate-position-2",
+          "indexId": "rate-index",
+          "quantity": 1,
+          "indexPrice": 1000
+        },
+        {
+          "timestamp": 200,
+          "action": "buy",
+          "positionId": "rate-position-3",
+          "indexId": "rate-index",
+          "quantity": 1,
+          "indexPrice": 1000
+        },
+        {
+          "timestamp": 300,
+          "action": "buy",
+          "positionId": "rate-position-4",
+          "indexId": "rate-index",
+          "quantity": 1,
+          "indexPrice": 1000
+        },
+        {
+          "timestamp": 400,
+          "action": "buy",
+          "positionId": "rate-position-5",
+          "indexId": "rate-index",
+          "quantity": 1,
+          "indexPrice": 1000
+        },
+        {
+          "timestamp": 500,
+          "action": "buy",
+          "positionId": "rate-position-6",
+          "indexId": "rate-index",
+          "quantity": 1,
+          "indexPrice": 1000
+        },
+        {
+          "timestamp": 600,
+          "action": "buy",
+          "positionId": "rate-position-7",
+          "indexId": "rate-index",
+          "quantity": 1,
+          "indexPrice": 1000
+        },
+        {
+          "timestamp": 700,
+          "action": "buy",
+          "positionId": "rate-position-8",
+          "indexId": "rate-index",
+          "quantity": 1,
+          "indexPrice": 1000
+        },
+        {
+          "timestamp": 800,
+          "action": "buy",
+          "positionId": "rate-position-9",
+          "indexId": "rate-index",
+          "quantity": 1,
+          "indexPrice": 1000
+        },
+        {
+          "timestamp": 900,
+          "action": "buy",
+          "positionId": "rate-position-10",
+          "indexId": "rate-index",
+          "quantity": 1,
+          "indexPrice": 1000
+        },
+        {
+          "timestamp": 1000,
+          "action": "buy",
+          "positionId": "rate-position-11",
+          "indexId": "rate-index",
+          "quantity": 1,
+          "indexPrice": 1000
+        }
+      ]
+    },
+    {
+      "description": "Edge case: Multiple indices with conflicting orders",
+      "steps": [
+        {
+          "timestamp": 0,
+          "action": "buy",
+          "positionId": "multi-position-1",
+          "indexId": "multi-index-1",
+          "quantity": 1,
+          "indexPrice": 1000
+        },
+        {
+          "timestamp": 100,
+          "action": "buy",
+          "positionId": "multi-position-2",
+          "indexId": "multi-index-2",
+          "quantity": 1,
+          "indexPrice": 2000
+        },
+        {
+          "timestamp": 200,
+          "action": "buy",
+          "positionId": "multi-position-3",
+          "indexId": "multi-index-1",
+          "quantity": 2,
+          "indexPrice": 990
+        },
+        {
+          "timestamp": 300,
+          "action": "buy",
+          "positionId": "multi-position-4",
+          "indexId": "multi-index-2",
+          "quantity": 2,
+          "indexPrice": 1990
+        },
+        {
+          "timestamp": 400,
+          "action": "rebalance",
+          "indexId": "multi-index-1"
+        },
+        {
+          "timestamp": 450,
+          "action": "rebalance",
+          "indexId": "multi-index-2"
+        }
+      ]
+    }
+  ]
+}
